@@ -3,7 +3,7 @@
 
 from datetime import datetime
 
-# Convert Fahrenheit to Celsius
+# Convert the inputted value based on the selected data type
 def convertData(value):
     if conversionType == "1":
         convertedValue = (value - 32) * 5 / 9
@@ -13,22 +13,29 @@ def convertData(value):
         convertedValue = value * 2.54
     return convertedValue
 
-# Collect dates and tempretures
+# Collect dates and numerical values based on the selected data type
 def getInput():
     global conversionType
-    
+
+    # Display data type options for the user
     print("What type of data would you like to enter?")
     print("1 Temperature (Fahrenheit)")
     print("2 Weight (Pounds)")
     print("3 Rain Amount (Inches)")
 
     conversionType = input()
+
+    while conversionType not in ("1", "2", "3"):
+        print("Invalid selection. Please enter 1, 2, or 3.")
+        conversionType = input()
     
     numberOfEntries = int(input("How many entries are you inputting?\n"))
 
+    # Repeat data entry based on the number of enteries selected
     for entry in range(numberOfEntries):
         entryDate = input("Enter a date:\n")
 
+        # Request a numerical value based on the selected data type
         if conversionType == "1":
             value = float(input("Enter the highest temp for the inputted date:\n"))
         elif conversionType == "2":
@@ -58,6 +65,6 @@ print(f"You selected {number} at {timestamp}\n")
 if number == "1":
     getInput()
 else:
-    print("Error: The chosen functionalisty is not implemented yet")
+    print("Error: The chosen functionality is not implemented yet")
         
     
